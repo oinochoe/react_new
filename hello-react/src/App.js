@@ -1,6 +1,8 @@
 import React from 'react';
 import MyComponent from './MyComponent';
 import Counter from './Counter';
+import Say from './Say';
+import EventPractice from './EventPractice';
 
 const App = () => {
   return (
@@ -9,6 +11,8 @@ const App = () => {
         리액트
       </MyComponent>
       <Counter />
+      <Say />
+      <EventPractice />
     </>
   );
 };
