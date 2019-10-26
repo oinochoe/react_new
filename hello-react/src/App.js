@@ -7,6 +7,7 @@ import ValidationSample from './ValidationSample';
 import ScrollBox from './ScrollBox';
 import IterationSample from './IterationSample';
 import LifeCycleSample from './LifeCycleSample';
+import ErrorBoundary from './ErrorBoundary';
 
 // 랜덤 색상을 생성합니다.
 function getRandomColor() {
@@ -39,7 +40,9 @@ class App extends Component {
         </button>
         <IterationSample />
         <button onClick={this.handleClick}>랜덤 색상</button>
-        <LifeCycleSample color={this.state.color} />
+        <ErrorBoundary>
+          <LifeCycleSample color={this.state.color} />
+        </ErrorBoundary>
       </>
     );
   }
