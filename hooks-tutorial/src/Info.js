@@ -10,7 +10,8 @@ const Info = () => {
       name,
       nickname
     });
-  });
+    console.log("마운트 될 때만 실ㅇ행됩니다.");
+  }, []);
 
   const onChangeName = e => {
     setName(e.target.value);
