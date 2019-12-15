@@ -1,8 +1,5 @@
 import React from 'react';
-import styles from './TodoTemplate.scss';
-import classNames from 'classnames/bind';
-
-const cx = classNames.bind(styles);
+import './TodoTemplate.scss';
 
 const TodoTemplate = ({ children }) => (
   <div className="TodoTemplate">
