@@ -4,7 +4,7 @@ import './TodoList.scss';
 
 const TodoList = ({ todos }) => {
   return (
-    <div class="TodoList">
+    <div className="TodoList">
       {todos.map(todo => (
         <TodoListItem todo={todo} key={todo.id} />
       ))}
