@@ -1,12 +1,20 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { Route, Link } from "react-router-dom";
 import About from "./About";
 import Home from "./Home";
 
 function App() {
   return (
     <>
-      <Route path="/" component={Home} />
+      <ul>
+        <li>
+          <Link to="/">홈으로</Link>
+        </li>
+        <li>
+          <Link to="/about">소개페이지</Link>
+        </li>
+      </ul>
+      <Route path="/" component={Home} exact={true} />
       <Route path="/about" component={About} />
     </>
   );
