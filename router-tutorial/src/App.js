@@ -15,7 +15,7 @@ function App() {
         </li>
       </ul>
       <Route path="/" component={Home} exact={true} />
-      <Route path="/about" component={About} />
+      <Route path={["/about", "/info"]} component={About} />
     </>
   );
 }
