@@ -1,6 +1,6 @@
-import React from "react";
-import { Link, Route } from "react-router-dom";
-import Profile from "./profile";
+import React from 'react';
+import { Link, Route } from 'react-router-dom';
+import Profile from './Profile';
 
 const Profiles = () => {
   return (
@@ -24,3 +24,5 @@ const Profiles = () => {
     </div>
   );
 };
+
+export default Profiles;
