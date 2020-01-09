@@ -13,7 +13,7 @@ class HistorySample extends Component {
 
   componentDidMount() {
     // 이것을 설정하고 나면 페이지에 변화가 생기려고 할 때마다 정말 나갈 것인지 질문
-    this.unblock = this.props.history.back('정말 떠나실 건가요?');
+    this.unblock = this.props.history.block('정말 떠나실 건가요?');
   }
 
   componentWillUnmount() {
