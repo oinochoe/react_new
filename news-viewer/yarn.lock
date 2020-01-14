@@ -138,9 +138,6 @@
   dependencies:
     "@babel/types" "^7.7.4"
 
-<<<<<<< HEAD
-"@babel/helper-module-imports@^7.0.0", "@babel/helper-module-imports@^7.7.4":
-=======
 "@babel/helper-module-imports@^7.0.0":
   version "7.8.0"
   resolved "https://registry.yarnpkg.com/@babel/helper-module-imports/-/helper-module-imports-7.8.0.tgz#076edda55d8cd39c099981b785ce53f4303b967e"
@@ -149,7 +146,6 @@
     "@babel/types" "^7.8.0"
 
 "@babel/helper-module-imports@^7.7.4":
->>>>>>> c5c378ef7e1a2b77737ebedad7d81052091dd8f6
   version "7.7.4"
   resolved "https://registry.yarnpkg.com/@babel/helper-module-imports/-/helper-module-imports-7.7.4.tgz#e5a92529f8888bf319a6376abfbd1cebc491ad91"
   integrity sha512-dGcrX6K9l8258WFjyDLJwuVKxR4XZfU0/vTUgOQYWEnRD8mgr+p4d6fCUMq/ys0h4CCt/S5JhbvtyErjWouAUQ==
