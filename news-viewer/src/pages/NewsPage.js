@@ -13,3 +13,5 @@ export const NewsPage = ({ match }) => {
     </>
   );
 };
+
+export default NewsPage;
