@@ -19,39 +19,6 @@ const initialState = {
   counter: 0,
 };
 
-// 스토어 만들기
-const store = createStore(reducer);
-
-const render = () => {
-  const state = store.getState(); // 현재 상태를 불러옵니다.
-  // 토글 처리
-  if (state.toggle) {
-    divToggle.classList.add('active');
-  } else {
-    divToggle.classList.remove('active');
-  }
-  // 카운터 처리
-  counter.innerText = state.counter;
-};
-
-render();
-
-// 상태업데이트 될 때마다 render 함수 호출
-store.subscribe(render);
-
-// 액션발생시키기
-divToggle.onClick = () => {
-  store.dispatch(toggleSwitch());
-};
-
-btnIncrease.onClick = () => {
-  store.dispatch(increase());
-};
-
-btnDecrease.onClick = () => {
-  store.dispatch(decrease());
-};
-
 // state가 undefined일 때는 initialState를 기본값으로 사용
 function reducer(state = initialState, action) {
   // action.type에 따라 다른 작업을 처리함.
@@ -75,3 +42,36 @@ function reducer(state = initialState, action) {
       return state;
   }
 }
+
+// 스토어 만들기
+const store = createStore(reducer);
+
+const render = () => {
+  const state = store.getState(); // 현재 상태를 불러옵니다.
+  // 토글 처리
+  if (state.toggle) {
+    divToggle.classList.add('active');
+  } else {
+    divToggle.classList.remove('active');
+  }
+  // 카운터 처리
+  counter.innerText = state.counter;
+};
+
+render();
+
+// 상태업데이트 될 때마다 render 함수 호출
+store.subscribe(render);
+
+// 액션발생시키기
+divToggle.onclick = e => {
+  store.dispatch(toggleSwitch());
+};
+
+btnIncrease.onclick = () => {
+  store.dispatch(increase(2));
+};
+
+btnDecrease.onclick = () => {
+  store.dispatch(decrease());
+};
