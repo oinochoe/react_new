@@ -13,6 +13,12 @@ const toggleSwitch = () => ({ type: TOGGLE_SWITCH });
 const increase = difference => ({ type: INCREASE, difference });
 const decrease = () => ({ type: DECREASE });
 
+// 초깃값 설정
+const initialState = {
+  toggle: false,
+  counter: 0,
+};
+
 // 스토어 만들기
 const store = createStore(reducer);
 
@@ -33,10 +39,17 @@ render();
 // 상태업데이트 될 때마다 render 함수 호출
 store.subscribe(render);
 
-// 초깃값 설정
-const initialState = {
-  toggle: false,
-  counter: 0,
+// 액션발생시키기
+divToggle.onClick = () => {
+  store.dispatch(toggleSwitch());
+};
+
+btnIncrease.onClick = () => {
+  store.dispatch(increase());
+};
+
+btnDecrease.onClick = () => {
+  store.dispatch(decrease());
 };
 
 // state가 undefined일 때는 initialState를 기본값으로 사용
