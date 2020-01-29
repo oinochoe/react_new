@@ -30,6 +30,9 @@ const render = () => {
 
 render();
 
+// 상태업데이트 될 때마다 render 함수 호출
+store.subscribe(render);
+
 // 초깃값 설정
 const initialState = {
   toggle: false,
