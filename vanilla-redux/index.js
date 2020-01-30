@@ -69,7 +69,7 @@ divToggle.onclick = e => {
 };
 
 btnIncrease.onclick = () => {
-  store.dispatch(increase(2));
+  store.dispatch(increase(26));
 };
 
 btnDecrease.onclick = () => {
