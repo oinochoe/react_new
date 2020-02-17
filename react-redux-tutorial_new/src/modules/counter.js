@@ -1,9 +1,11 @@
+import { createAction } from 'redux-actions';
+
 // ducks 방식인 modules폴더 내에 작성
 const INCREASE = 'counter/INCREASE';
 const DECREASE = 'counter/DECREASE';
 
-export const increase = () => ({ type: INCREASE });
-export const decrease = () => ({ type: DECREASE });
+export const increase = createAction(INCREASE);
+export const decrease = createAction(DECREASE);
 
 const initialState = {
   number: 0,
