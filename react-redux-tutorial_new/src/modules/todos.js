@@ -1,4 +1,4 @@
-import { createAction, handleAction, handleActions } from 'redux-actions';
+import { createAction, handleActions } from 'redux-actions';
 
 // 액션 타입
 const CHANGE_INPUT = 'todos/CHANGE_INPUT'; // 인풋 값을 변경함
@@ -40,25 +40,21 @@ const initialState = {
 // 리덕스
 const todos = handleActions(
     {
-        [CHANGE_INPUT]: (state, action) => ({
+        // 비구조화 할당문법으로 사용. payload:input
+        [CHANGE_INPUT]: (state, { payload: input }) => ({ ...state, input }),
+        [INSERT]: (state, { payload: todo }) => ({
             ...state,
-            input: action.payload,
+            todos: state.todos.concat(todo),
         }),
-        [INSERT]: (state, action) => ({
-            ...state,
-            todos: state.todos.concat(action.payload),
-        }),
-        [TOGGLE]: (state, action) => ({
+        [TOGGLE]: (state, { payload: id }) => ({
             ...state,
             todos: state.todos.map(todo =>
-                todo.id === action.payload
-                    ? { ...todo, done: !todo.done }
-                    : todo,
+                todo.id === id ? { ...todo, done: !todo.done } : todo,
             ),
         }),
-        [REMOVE]: (state, action) => ({
+        [REMOVE]: (state, { payload: id }) => ({
             ...state,
-            todos: state.todos.filter(todo => todo.id !== action.id),
+            todos: state.todos.filter(todo => todo.id !== id),
         }),
     },
     initialState,
