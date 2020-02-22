@@ -35,9 +35,9 @@ const categories = [
 
 const CategoriesBlock = styled.div`
   display: flex;
-  padding: 1rem;
   width: 768px;
   margin: 0 auto;
+  box-sizing:border-box;
   @media screen and (max-width: 768px) {
     width: 100%;
     overflow-x: auto;
@@ -45,12 +45,13 @@ const CategoriesBlock = styled.div`
 `;
 
 const Category = styled(NavLink)`
-  font-size: 1.125rem;
+  font-size: 1rem;
   cursor: pointer;
   white-space: pre;
   text-decoration: none;
   color: inherit;
-  padding-bottom: 0.25rem;
+  padding:1rem;
+  box-sizing:border-box;
 
   &:hover {
     color: #495057;
@@ -65,9 +66,6 @@ const Category = styled(NavLink)`
     }
   }
 
-  & + & {
-    margin-left: 1rem;
-  }
 `;
 
 const Categories = () => {
