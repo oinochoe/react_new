@@ -1,4 +1,4 @@
-import React from 'redux';
+import React from 'react';
 
 const Counter = ({ onIncrease, onDecrease, number }) => {
     return (
