@@ -7,11 +7,10 @@ const INSERT = 'todos/INSERT'; // 새로운 todo를 등록함
 const TOGGLE = 'todos/TOGGLE'; // todos를 체크/체크 해제함
 const REMOVE = 'todos/REMOVE'; // todo를 제거함
 
-let id = 3; // insert가 호출될 때마다 1씩 더해집니다.
-
 // 액션 생성 함수
 export const changeInput = createAction(CHANGE_INPUT, input => input);
 
+let id = 3; // insert가 호출될 때마다 1씩 더해집니다.
 export const insert = createAction(INSERT, text => ({
     id: id++,
     text,
@@ -19,7 +18,7 @@ export const insert = createAction(INSERT, text => ({
 }));
 
 export const toggle = createAction(TOGGLE, id => id);
-export const remove = createAction(REMOVE, id);
+export const remove = createAction(REMOVE, id => id);
 
 // 리덕스 초기 상태
 const initialState = {
