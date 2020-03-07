@@ -59,5 +59,13 @@ const sample = handleActions({
             ...state.loading,
             GET_POST: false, //요청 완료
         },
+        post: action.payload,
+    }),
+    [GET_POST_FAILURE]: (state, action) => ({
+        ...state,
+        loading: {
+            ...state.loading,
+            GET_POST: false, // 요청 완료
+        },
     }),
 });
