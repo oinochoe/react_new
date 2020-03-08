@@ -68,4 +68,11 @@ const sample = handleActions({
             GET_POST: false, // 요청 완료
         },
     }),
+    [GET_USERS]: state => ({
+        ...state,
+        loading: {
+            ...state.loading,
+            GET_USERS: true, // 요청 시작
+        },
+    }),
 });
