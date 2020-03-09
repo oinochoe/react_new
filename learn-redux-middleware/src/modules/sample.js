@@ -75,4 +75,12 @@ const sample = handleActions({
             GET_USERS: true, // 요청 시작
         },
     }),
+    [GET_USERS_SUCCESS]: (state, action) => ({
+        ...state,
+        loading: {
+            ...state.loading,
+            GET_USERS: false, // 요청 완료
+        },
+        users: action.payload,
+    }),
 });
