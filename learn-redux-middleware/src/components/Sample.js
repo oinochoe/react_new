@@ -14,7 +14,7 @@ const Sample = ({ loadingPost, loadingUsers, post, users }) => {
                 )}
             </section>
             <hr />
-            <sction>
+            <section>
                 <h1>사용자 목록</h1>
                 {loadingUsers && '로딩 중...'}
                 {!loadingPost && users && (
@@ -26,7 +26,7 @@ const Sample = ({ loadingPost, loadingUsers, post, users }) => {
                         ))}
                     </ul>
                 )}
-            </sction>
+            </section>
         </div>
     );
 };

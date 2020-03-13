@@ -33,6 +33,24 @@ export const getPost = id => async dispatch => {
     }
 };
 
+export const getUsers = () => async dispatch => {
+    dispatch({ type: GET_USERS }); //요청 시작을 알림
+    try {
+        const response = await api.getUsers();
+        dispatch({
+            type: GET_USERS_SUCCESS,
+            payload: response.data,
+        }); // 요청 성공
+    } catch (e) {
+        dispatch({
+            type: GET_USERS_FAILURE,
+            payload: e,
+            error: true,
+        }); // 에러 발생
+        throw e; // 나중에 컴포넌트단에서 에러를 조회할 수 있게 도와줌
+    }
+};
+
 // 초기상태 선언
 // 요청의 로딩 중 상태는 Loading이라는 객체에서 관리합니다.
 
