@@ -1,7 +1,7 @@
 import React from "react";
 
 function App() {
-  return <>안녕</>;
+  return <>hi</>;
 }
 
 export default App;
