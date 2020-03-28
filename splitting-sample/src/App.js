@@ -11,9 +11,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <p onClick={onClick}>Hello React!</p>
-        <Suspense fallback={<div>loading...</div>}>
-          {visible && <SplitMe />}
-        </Suspense>
+        {visible && <SplitMe />}
       </header>
     </div>
   );
