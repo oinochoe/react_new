@@ -1,6 +1,6 @@
 import React, { useState, Suspense } from "react";
-
-const SplitMe = React.lazy(() => import("./SplitMe"));
+import loadable from "@loadable/component";
+const SplitMe = loadable(() => import("./SplitMe"));
 
 function App() {
   const [visible, setVisible] = useState(false);
