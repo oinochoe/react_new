@@ -1,6 +1,8 @@
-import React, { useState, Suspense } from "react";
+import React, { useState } from "react";
 import loadable from "@loadable/component";
-const SplitMe = loadable(() => import("./SplitMe"));
+const SplitMe = loadable(() => import("./SplitMe"), {
+  fallback: <div>loading...</div>
+});
 
 function App() {
   const [visible, setVisible] = useState(false);
