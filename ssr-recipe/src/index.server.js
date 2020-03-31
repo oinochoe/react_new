@@ -23,6 +23,6 @@ const serverRender = (req, res, next) => {
 app.use(serverRender);
 
 // 5000 포트로 서버를 가동합니다.
-app.listend(5000, () => {
+app.listen(5000, () => {
     console.log('Running on http://localhost:5000');
 });
