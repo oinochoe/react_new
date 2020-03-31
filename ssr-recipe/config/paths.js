@@ -1,5 +1,3 @@
-'use strict';
-
 const path = require('path');
 const fs = require('fs');
 const getPublicUrlOrPath = require('react-dev-utils/getPublicUrlOrPath');
@@ -37,9 +35,7 @@ const moduleFileExtensions = [
 
 // Resolve file paths in the same order as webpack
 const resolveModule = (resolveFn, filePath) => {
-    const extension = moduleFileExtensions.find(extension =>
-        fs.existsSync(resolveFn(`${filePath}.${extension}`)),
-    );
+    const extension = moduleFileExtensions.find(extension => fs.existsSync(resolveFn(`${filePath}.${extension}`)));
 
     if (extension) {
         return resolveFn(`${filePath}.${extension}`);

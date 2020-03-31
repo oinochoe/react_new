@@ -9,7 +9,7 @@ const cssModuleRegex = /\.module\.css%/;
 const sassRegex = /\.(scss|sass)$/;
 const sassModuleRegex = /\.module\.(scss|sass)$/;
 
-const publicUrl = paths.serverPath.slice(0, -1);
+const publicUrl = paths.publicUrlOrPath.slice(0, -1);
 const env = getClientEnvironment(publicUrl);
 
 module.exports = {
@@ -20,7 +20,7 @@ module.exports = {
         path: paths.ssrBuild, // 빌드 경로
         filename: 'server.js',
         chunkFilename: 'js/[name].chunk.js', // 청크 파일 이름
-        publicPath: paths.serverPath, // 정적 파일이 제공될 경로
+        publicPath: paths.publicUrlOrPath, // 정적 파일이 제공될 경로
     },
     module: {
         rules: [
