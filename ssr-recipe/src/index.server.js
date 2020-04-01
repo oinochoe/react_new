@@ -11,7 +11,7 @@ const manifest = JSON.parse(fs.readFileSync(path.resolve('./build/asset-manifest
 
 const chunks = Object.keys(manifest.files)
     .filter(key => /chunk\.js$/.exec(key)) // chunk.js로 끝나는 키를 찾아서
-    .map(key => `<script src="${manifest[key]}></script>`) // script 태그로 변환하고
+    .map(key => `<script src="${manifest.files[key]}"></script>`) // script 태그로 변환하고
     .join(''); // 합침
 
 function createPage(root) {
@@ -23,16 +23,16 @@ function createPage(root) {
             <meta name="viewport" content"width=device-width, initial-scale=1, shrink-to-fit=no" />
             <meta name="theme-color" content="#000000">
             <title>React App</title>
-            <link href="${manifest['main.css']}" rel="stylesheet" />
+            <link href="${manifest.files['main.css']}" rel="stylesheet" />
         </head>
         <body>
             <noscript>You need to enable Javascript to run this app.</noscript>
             <div id="root">
                 ${root}
             </div>
-            <script src="${manifest['runtime-main.js']}></script>
+            <script src="${manifest.files['runtime-main.js']}"></script>
             ${chunks}
-            <script src="${manifest['main.js']}></script>
+            <script src="${manifest.files['main.js']}"></script>
         </body>
     </html>
     `;
