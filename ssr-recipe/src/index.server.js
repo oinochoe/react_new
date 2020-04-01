@@ -7,7 +7,7 @@ import path from 'path';
 import fs from 'fs';
 
 // asset-manifest.json에서 파일 경로들을 조회합니다.
-const manifest = JSON.parse(fs.readFileSync(path.resolve('./build/asset-manifest.json', 'utf8')));
+const manifest = JSON.parse(fs.readFileSync(path.resolve('./build/asset-manifest.json'), 'utf8'));
 
 const chunks = Object.keys(manifest.files)
     .filter(key => /chunk\.js$/.exec(key)) // chunk.js로 끝나는 키를 찾아서
