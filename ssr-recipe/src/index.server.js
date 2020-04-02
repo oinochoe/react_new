@@ -19,7 +19,7 @@ const chunks = Object.keys(manifest.files)
     .map(key => `<script src="${manifest.files[key]}"></script>`) // script 태그로 변환하고
     .join(''); // 합침
 
-function createPage(root) {
+function createPage(root, stateScript) {
     return `<!DOCTYPE html>
     <html lang="en">
         <head>
@@ -34,7 +34,8 @@ function createPage(root) {
             <noscript>You need to enable Javascript to run this app.</noscript>
             <div id="root">
                 ${root}
-            </div>
+            </div>'
+            ${stateScript}
             <script src="${manifest.files['runtime-main.js']}"></script>
             ${chunks}
             <script src="${manifest.files['main.js']}"></script>
@@ -46,7 +47,7 @@ function createPage(root) {
 const app = express();
 
 // 서버 사이드 렌더링을 처리할 핸들러 함수입니다.
-const serverRender = (req, res, next) => {
+const serverRender = async (req, res, next) => {
     // 이 함수는 404가 떠야 하는 상황에 404를 띄우지 않고 서버 사이드 렌더링을 해 줍니다.
 
     const context = {};
@@ -69,7 +70,7 @@ const serverRender = (req, res, next) => {
 
     ReactDOMServer.renderToStaticMarkup(jsx); // renderToStaticMarkup으로 한번 더 렌더링합니다.
     try {
-        Promise.all(preloadContext.promises); // 모든 프로미스를 기다립니다.
+        await Promise.all(preloadContext.promises); // 모든 프로미스를 기다립니다.
     } catch (e) {
         return res.status(500);
     }
