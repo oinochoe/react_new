@@ -69,7 +69,7 @@ const serverRender = (req, res, next) => {
 
     ReactDOMServer.renderToStaticMarkup(jsx); // renderToStaticMarkup으로 한번 더 렌더링합니다.
     try {
-        await Promise.all(preloadContext.promises); // 모든 프로미스를 기다립니다.
+        Promise.all(preloadContext.promises); // 모든 프로미스를 기다립니다.
     } catch (e) {
         return res.status(500);
     }
