@@ -9,6 +9,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import rootReducer from './modules';
+import PreloadContext from './lib/PreloadContext';
 
 // asset-manifest.json에서 파일 경로들을 조회합니다.
 const manifest = JSON.parse(fs.readFileSync(path.resolve('./build/asset-manifest.json'), 'utf8'));
@@ -50,13 +51,31 @@ const serverRender = (req, res, next) => {
 
     const context = {};
     const store = createStore(rootReducer, applyMiddleware(thunk));
+
+    const preloadContext = {
+        done: false,
+        promises: [],
+    };
+
     const jsx = (
-        <Provider store={store}>
-            <StaticRouter location={req.url} context={context}>
-                <App />
-            </StaticRouter>
-        </Provider>
+        <PreloadContext.Provider value={preloadContext}>
+            <Provider store={store}>
+                <StaticRouter location={req.url} context={context}>
+                    <App />
+                </StaticRouter>
+            </Provider>
+        </PreloadContext.Provider>
     );
+
+    ReactDOMServer.renderToStaticMarkup(jsx); // renderToStaticMarkup으로 한번 더 렌더링합니다.
+    try {
+        await Promise.all(preloadContext.promises); // 모든 프로미스를 기다립니다.
+    } catch (e) {
+        return res.status(500);
+    }
+
+    preloadContext.done = true;
+
     const root = ReactDOMServer.renderToString(jsx); // 렌더링을 하고
     res.send(createPage(root)); // 클라이언트에 결과물을 응답합니다.
 };
