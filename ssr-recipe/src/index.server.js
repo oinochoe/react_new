@@ -17,8 +17,8 @@ import { END } from 'redux-saga';
 const manifest = JSON.parse(fs.readFileSync(path.resolve('./build/asset-manifest.json'), 'utf8'));
 
 const chunks = Object.keys(manifest.files)
-    .filter(key => /chunk\.js$/.exec(key)) // chunk.js로 끝나는 키를 찾아서
-    .map(key => `<script src="${manifest.files[key]}"></script>`) // script 태그로 변환하고
+    .filter((key) => /chunk\.js$/.exec(key)) // chunk.js로 끝나는 키를 찾아서
+    .map((key) => `<script src="${manifest.files[key]}"></script>`) // script 태그로 변환하고
     .join(''); // 합침
 
 function createPage(root, stateScript) {
@@ -36,7 +36,7 @@ function createPage(root, stateScript) {
             <noscript>You need to enable Javascript to run this app.</noscript>
             <div id="root">
                 ${root}
-            </div>'
+            </div>
             ${stateScript}
             <script src="${manifest.files['runtime-main.js']}"></script>
             ${chunks}
